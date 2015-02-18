@@ -1,4 +1,5 @@
 require_relative 'complex_fields/country_iso'
+require_relative 'complex_fields/currency'
 
 class RowProcessor
   DEFAULT_PROCESSOR = ->(value) { value }
@@ -19,7 +20,8 @@ class RowProcessor
   private
 
   def defined_presenters
-    { country_iso: ComplexFields::CountryIso.new }
+    { currency:    ComplexFields::Currency.new,
+      country_iso: ComplexFields::CountryIso.new, }
   end
 
 end
