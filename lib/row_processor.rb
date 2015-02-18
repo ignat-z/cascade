@@ -11,7 +11,7 @@ class RowProcessor
 
   def call(row)
     @columns_values.supported_keys.inject({}) do |result, key|
-      raw_value = row[@columns_values.public_send(key)]
+      raw_value = row.fetch(@columns_values.public_send(key))
       value     = @presenters.fetch(key, DEFAULT_PROCESSOR).call(raw_value)
       result.merge(key => value)
     end
