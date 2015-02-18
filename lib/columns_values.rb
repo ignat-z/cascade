@@ -1,5 +1,5 @@
 class ColumnsValues
-  SUPPORTED_KEYS = %i(country_iso currency)
+  SUPPORTED_KEYS = %i(country_iso currency name dorm room)
 
   def initialize(options = {})
     @content = options.fetch(:content) { parse_content_file }
