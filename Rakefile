@@ -1,11 +1,9 @@
 require 'rake/testtask'
 require_relative 'config/initializers/active_record'
-load 'tasks/parse.rake'
+Dir[File.dirname(__FILE__) + '/tasks/*.rake'].each { |task| load task }
 
-Rake::TestTask.new do |t|
-  t.pattern = 'spec/**/*_spec.rb'
+Rake::TestTask.new do |task|
+  task.pattern = 'spec/**/*_spec.rb'
 end
 
-task :default do
-  Rake::Task['test'].invoke
-end
+task default: [:test]
