@@ -13,13 +13,7 @@ describe ColumnsValues do
 
 
   context "respond to single values columns" do
-    ColumnsValues::SUPPORTED_VALUES.each do |key|
-      it { subject.must_respond_to(key) }
-    end
-  end
-
-  context "respond to multiple values columns" do
-    ColumnsValues::MULTIPLE_VALUES.each do |key|
+    ColumnsValues::SUPPORTED_KEYS.each do |key|
       it { subject.must_respond_to(key) }
     end
   end

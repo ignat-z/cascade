@@ -1,17 +1,12 @@
 class ColumnsValues
-  MULTIPLE_VALUES  = %i()
-  SUPPORTED_VALUES = %i(country_iso)
-
-  SUPPORTED_KEYS = SUPPORTED_VALUES - MULTIPLE_VALUES
+  SUPPORTED_KEYS = %i(country_iso)
 
   def initialize(options = {})
     @content = options.fetch(:content) { parse_content_file }
     init_columns_values_store
   end
 
-  delegate *SUPPORTED_VALUES, to: :columns_values_store
-  delegate *MULTIPLE_VALUES,  to: :columns_values_store
-
+  delegate *SUPPORTED_KEYS, to: :columns_values_store
 
   def supported_keys
     SUPPORTED_KEYS
