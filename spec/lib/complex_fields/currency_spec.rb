@@ -1,9 +1,9 @@
 require_relative '../../spec_helper'
-require_relative '../../../lib/complex_fields/currency_parser'
+require_relative '../../../lib/complex_fields/currency'
 
-describe ComplexFields::CountryIso do
+describe ComplexFields::Currency do
 
-  subject { ComplexFields::CurrencyParser.new }
+  subject { ComplexFields::Currency.new }
 
   describe 'parse' do
     it "validates input string to be shure that it's number and return nil if it's not" do

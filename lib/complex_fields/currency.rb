@@ -2,7 +2,7 @@ require 'bigdecimal'
 require 'bigdecimal/util'
 
 module ComplexFields
-  class CurrencyParser
+  class Currency
 
     def call(value)
       value = normalized_value(value)
