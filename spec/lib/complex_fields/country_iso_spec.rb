@@ -13,4 +13,8 @@ describe ComplexFields::CountryIso do
       subject.call("some_blank_value")
     end
   end
+
+  it 'return nil if nil value passed' do
+    assert_nil subject.call(nil)
+  end
 end
