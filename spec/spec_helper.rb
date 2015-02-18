@@ -14,5 +14,8 @@ require 'awesome_print'
 require 'pry'
 require 'rr'
 
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 alias :context :describe
 

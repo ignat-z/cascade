@@ -17,6 +17,8 @@ GEM
     arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
     builder (3.2.2)
+    codeclimate-test-reporter (0.4.6)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     docile (1.1.5)
     hstore_translate (1.0.0)
@@ -53,6 +55,7 @@ DEPENDENCIES
   activerecord
   awesome_print
   builder
+  codeclimate-test-reporter
   hstore_translate
   iso_country_codes
   minitest
