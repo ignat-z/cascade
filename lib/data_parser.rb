@@ -1,7 +1,7 @@
 require_relative 'columns_values'
 require_relative 'row_processor'
 
-class CompaniesParser
+class DataParser
   def initialize(filename, options = {})
     @filename = filename
     @data_provider = options.fetch(:data_provider) { CascadeCsv }
