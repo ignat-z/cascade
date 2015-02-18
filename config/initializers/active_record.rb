@@ -5,4 +5,4 @@ require 'pg'
 
 ActiveRecord::Base.establish_connection(YAML::load(File.open("config/database.yml")))
 
-require_relative '../../models/company.rb'
+Dir[File.dirname(__FILE__) + '/models/*.rb'].each(&method(:require))
