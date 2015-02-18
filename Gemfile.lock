@@ -25,11 +25,8 @@ GEM
     iso_country_codes (0.5.0)
     json (1.8.1)
     method_source (0.8.2)
-    mini_portile (0.6.0)
     minitest (5.4.2)
     multi_json (1.10.1)
-    nokogiri (1.6.3.1)
-      mini_portile (= 0.6.0)
     pg (0.17.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -37,10 +34,6 @@ GEM
       slop (~> 3.4)
     rake (10.3.2)
     rr (1.1.2)
-    rubyXL (3.2.4)
-      nokogiri (>= 1.4.4)
-      rubyzip (>= 1.1.6)
-    rubyzip (1.1.6)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
     simplecov (0.9.1)
@@ -67,7 +60,5 @@ DEPENDENCIES
   pry
   rake
   rr
-  rubyXL
   shoulda-matchers
   simplecov
-  tzinfo
