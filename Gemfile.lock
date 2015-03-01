@@ -47,6 +47,7 @@ GEM
     thread_safe (0.3.4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    yard (0.8.7.6)
 
 PLATFORMS
   ruby
@@ -65,3 +66,4 @@ DEPENDENCIES
   rr
   shoulda-matchers
   simplecov
+  yard

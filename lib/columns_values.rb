@@ -8,6 +8,10 @@ class ColumnsValues
 
   delegate *SUPPORTED_KEYS, to: :columns_values_store
 
+  # Defines set of possible keys that can be used for iterating through
+  # parsed line
+  #
+  # @return [Array] of supported keys
   def supported_keys
     SUPPORTED_KEYS
   end

@@ -12,6 +12,9 @@ class DataParser
     @data_saver    = options.fetch(:data_saver)
   end
 
+  # Starts parsing processing with opening file and iterating through each line
+  # with parsing and then saves result of each line parsing with DataSaver
+  #
   def call
     companies_data = @data_provider.open(@filename)
     companies_data.each do |row|

@@ -6,6 +6,10 @@ class ErrorHandler
     @error_store = options.fetch(:error_store) { DEFAULT_ERROR_STORE }
   end
 
+  # Runs passed block with catching throwing errors and storing it in ErrorStore
+  #
+  # @param row [Hash] the object retrieved from CSV to store it in case of
+  # problems with processing
   def with_errors_handling(row)
     begin
       yield

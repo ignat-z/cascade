@@ -13,3 +13,4 @@ gem 'hstore_translate'
 gem 'rr'
 gem 'shoulda-matchers'
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'yard', group: :doc, require: nil
