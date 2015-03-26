@@ -24,6 +24,6 @@ class ColumnsValues
   end
 
   def parse_content_file
-    YAML::load(File.open('config/columns_match.yml'))
+    YAML.load_file('config/columns_match.yml')
   end
 end
