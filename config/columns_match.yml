@@ -1,7 +1,8 @@
-name: 0
-class: 1
-dorm: 2
-room: 3
-gpa: 4
-country_iso: 5
-currency: 6
+mapping:
+  - name
+  - class
+  - dorm
+  - room
+  - gpa
+  - country_iso
+  - currency

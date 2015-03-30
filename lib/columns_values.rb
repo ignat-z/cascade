@@ -1,27 +1,21 @@
 class ColumnsValues
-  SUPPORTED_KEYS = %i(country_iso currency name dorm room)
+  extend Forwardable
+
+  def_delegator :supported_keys, :index
 
   def initialize(options = {})
     @content = options.fetch(:content) { parse_content_file }
-    init_columns_values_store
   end
-
-  delegate *SUPPORTED_KEYS, to: :columns_values_store
 
   # Defines set of possible keys that can be used for iterating through
   # parsed line
   #
   # @return [Array] of supported keys
   def supported_keys
-    SUPPORTED_KEYS
+    @supported_keys ||= @content.fetch('mapping')
   end
 
   private
-  attr_reader :columns_values_store
-
-  def init_columns_values_store
-    @columns_values_store ||= OpenStruct.new(parse_content_file)
-  end
 
   def parse_content_file
     YAML.load_file('config/columns_match.yml')

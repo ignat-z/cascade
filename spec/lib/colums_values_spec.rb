@@ -11,10 +11,5 @@ describe ColumnsValues do
     end
   end
 
-
-  context "respond to single values columns" do
-    ColumnsValues::SUPPORTED_KEYS.each do |key|
-      it { subject.must_respond_to(key) }
-    end
-  end
+  it { delegate_method(:index).to(:supported_keys) }
 end

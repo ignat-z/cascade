@@ -16,7 +16,7 @@ class RowProcessor
   # @return [Hash] the object with parsed columns
   def call(row)
     @columns_values.supported_keys.inject({}) do |result, key|
-      raw_value = row.fetch(@columns_values.public_send(key))
+      raw_value = row.fetch(@columns_values.index(key))
       value     = @presenters.fetch(key, DEFAULT_PROCESSOR).call(raw_value)
       result.merge(key => value)
     end
