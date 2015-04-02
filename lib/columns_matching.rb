@@ -1,3 +1,5 @@
+require_relative "exceptions"
+
 class ColumnsMatching
   extend Forwardable
 
@@ -25,6 +27,7 @@ class ColumnsMatching
   private
 
   def parse_content_file
-    YAML.load_file("config/columns_match.yml").fetch("mapping")
+    content = YAML.load_file("config/columns_match.yml")
+    (content && content["mapping"]) || raise(Cascade::WrongMappingFormat.new)
   end
 end
