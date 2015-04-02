@@ -18,4 +18,11 @@ describe ErrorHandler do
       assert_includes @errors, [row, exception.to_s]
     end
   end
+
+  describe "DEFAULT_ERROR_STORE" do
+    it "create new array and push row with reason" do
+      result = ErrorHandler::DEFAULT_ERROR_STORE.call(:row, :reason)
+      assert_includes result, %i(row reason)
+    end
+  end
 end
