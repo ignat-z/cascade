@@ -1,9 +1,9 @@
-require_relative '../../spec_helper'
-require_relative '../../../lib/statistics_stores/abstract_store'
+require_relative "../../spec_helper"
+require_relative "../../../lib/statistics_stores/abstract_store"
 
 describe StatisticsStores::AbstractStore do
   context "on initialization" do
-    it 'will rise NotImplementedError for default value' do
+    it "will rise NotImplementedError for default value" do
       assert_raises NotImplementedError do
         StatisticsStores::AbstractStore.new
       end

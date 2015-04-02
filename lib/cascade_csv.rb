@@ -1,4 +1,4 @@
-require 'csv'
+require "csv"
 
 class CascadeCsv
   # Delegates oepn method to CSV with passed and alredy-defined params

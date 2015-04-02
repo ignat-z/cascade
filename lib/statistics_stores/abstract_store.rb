@@ -11,6 +11,7 @@ module StatisticsStores
     end
 
     private
+
     def initialize_value(*)
       raise NotImplementedError
     end

@@ -1,4 +1,4 @@
-require_relative '../statistics'
+require_relative "../statistics"
 
 module StatisticsCollectible
   module InstanceMethods

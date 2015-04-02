@@ -1,7 +1,7 @@
-require_relative 'columns_matching'
-require_relative 'row_processor'
-require_relative 'error_handler'
-require_relative 'helpers/configuration'
+require_relative "columns_matching"
+require_relative "row_processor"
+require_relative "error_handler"
+require_relative "helpers/configuration"
 
 class DataParser
   extend Configuration

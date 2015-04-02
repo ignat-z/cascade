@@ -5,6 +5,7 @@ module StatisticsStores
     end
 
     private
+
     def initialize_value
       []
     end
