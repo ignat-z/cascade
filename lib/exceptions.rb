@@ -1,0 +1,1 @@
+require_relative "exceptions/wrong_mapping_format"
