@@ -15,13 +15,13 @@ describe StatisticsCollectible do
   end
 
   it "defines reader methods for extended class" do
-    assert ExtendableClass.respond_to?(:simple_setting)
-    assert ExtendableClass.respond_to?(:setting_with_default)
+    assert_respond_to ExtendableClass, :simple_setting
+    assert_respond_to ExtendableClass, :setting_with_default
   end
 
   it "defines write accessor for extended class" do
-    assert ExtendableClass.respond_to?(:simple_setting=)
-    assert ExtendableClass.respond_to?(:setting_with_default=)
+    assert_respond_to ExtendableClass, :simple_setting=
+    assert_respond_to ExtendableClass, :setting_with_default=
   end
 
   it "allows to set class variables in configuration block" do
