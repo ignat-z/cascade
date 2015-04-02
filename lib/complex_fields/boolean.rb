@@ -1,6 +1,6 @@
 module ComplexFields
   class Boolean
-    TRUE_VALUES = ['True', 'true', 'x', '+', true]
+    TRUE_VALUES = ["True", "true", "x", "+", true]
 
     def call(value)
       TRUE_VALUES.include?(value)

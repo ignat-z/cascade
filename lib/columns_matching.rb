@@ -25,6 +25,6 @@ class ColumnsMatching
   private
 
   def parse_content_file
-    YAML.load_file('config/columns_match.yml').fetch('mapping')
+    YAML.load_file("config/columns_match.yml").fetch("mapping")
   end
 end

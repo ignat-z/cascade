@@ -1,3 +1,3 @@
-require_relative 'statistics_stores/abstract_store'
-require_relative 'statistics_stores/counter_store'
-require_relative 'statistics_stores/array_store'
+require_relative "statistics_stores/abstract_store"
+require_relative "statistics_stores/counter_store"
+require_relative "statistics_stores/array_store"

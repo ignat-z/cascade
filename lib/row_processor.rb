@@ -1,4 +1,4 @@
-require_relative 'complex_fields'
+require_relative "complex_fields"
 
 class RowProcessor
   DEFAULT_PROCESSOR = ->(value) { value }

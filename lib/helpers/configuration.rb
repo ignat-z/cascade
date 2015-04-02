@@ -1,5 +1,4 @@
 module Configuration
-
   def configuration
     yield self
   end
@@ -30,5 +29,4 @@ module Configuration
       define_method name, &block
     end
   end
-
 end

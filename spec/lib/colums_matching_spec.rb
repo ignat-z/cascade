@@ -1,5 +1,5 @@
-require_relative '../spec_helper'
-require_relative '../../lib/columns_matching'
+require_relative "../spec_helper"
+require_relative "../../lib/columns_matching"
 
 describe ColumnsMatching do
   subject { ColumnsMatching.new }
@@ -14,7 +14,7 @@ describe ColumnsMatching do
   context "#column_type" do
     it "return curresponding value for passed column value" do
       assert_equal :string,
-        ColumnsMatching.new(content: { name: 'string' }).column_type(:name)
+        ColumnsMatching.new(content: { name: "string" }).column_type(:name)
     end
   end
 
