@@ -1,4 +1,4 @@
-require_relative 'columns_values'
+require_relative 'columns_matching'
 require_relative 'row_processor'
 require_relative 'error_handler'
 require_relative 'helpers/configuration'
@@ -8,11 +8,11 @@ class DataParser
 
   def initialize(filename, options = {})
     @filename = filename
-    @data_provider = options.fetch(:data_provider) { CascadeCsv }
-    @column_values = options.fetch(:column_values) { ColumnsValues.new }
-    @row_processor = options.fetch(:row_processor) { RowProcessor.new }
-    @error_handler = options.fetch(:error_handler) { ErrorHandler.new }
-    @data_saver    = options.fetch(:data_saver)
+    @data_provider    = options.fetch(:data_provider)    { CascadeCsv }
+    @columns_matching = options.fetch(:columns_matching) { ColumnsMatching.new }
+    @row_processor    = options.fetch(:row_processor)    { RowProcessor.new }
+    @error_handler    = options.fetch(:error_handler)    { ErrorHandler.new }
+    @data_saver       = options.fetch(:data_saver)
   end
 
   # Starts parsing processing with opening file and iterating through each line
