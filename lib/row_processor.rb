@@ -17,7 +17,7 @@ class RowProcessor
   def call(row)
     @columns_values.supported_keys.inject({}) do |result, key|
       raw_value = row.fetch(@columns_values.index(key))
-      value     = @presenters.fetch(key, DEFAULT_PROCESSOR).call(raw_value)
+      value     = @presenters.fetch(key.to_sym, DEFAULT_PROCESSOR).call(raw_value)
       result.merge(key => value)
     end
   end
