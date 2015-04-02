@@ -19,8 +19,7 @@ class DataParser
   # with parsing and then saves result of each line parsing with DataSaver
   #
   def call
-    companies_data = @data_provider.open(@filename)
-    companies_data.each do |row|
+    @data_provider.open(@filename).each do |row|
       @error_handler.with_errors_handling(row) do
         @data_saver.call @row_processor.call(row)
       end

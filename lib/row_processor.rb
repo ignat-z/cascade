@@ -5,7 +5,7 @@ class RowProcessor
 
   def initialize(options = {})
     @columns_values = options.delete(:columns_values) || ColumnsValues.new
-    @presenters     = options.reverse_merge(defined_presenters)
+    @presenters     = options
   end
 
   # Iterates through object using columns values supported keys as keys for
@@ -20,15 +20,4 @@ class RowProcessor
       result.merge(key => value)
     end
   end
-
-  private
-
-  def defined_presenters
-    {
-      currency:    ComplexFields::Currency.new,
-      country_iso: ComplexFields::CountryIso.new,
-      required:    ComplexFields::Boolean.new,
-    }
-  end
-
 end
