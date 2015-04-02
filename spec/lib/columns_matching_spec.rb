@@ -18,5 +18,15 @@ describe ColumnsMatching do
     end
   end
 
+  it "raise error if columns matching file doesnt contain mapping key" do
+    mock(YAML).load_file("config/columns_match.yml") { {} }
+    assert_raises(Cascade::WrongMappingFormat) { subject }
+  end
+
+  it "raise error if columns matching file doesnt contain any info" do
+    mock(YAML).load_file("config/columns_match.yml") { nil }
+    assert_raises(Cascade::WrongMappingFormat) { subject }
+  end
+
   it { delegate_method(:index).to(:supported_keys) }
 end

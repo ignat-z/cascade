@@ -5,7 +5,12 @@ require_relative "../lib/data_parser"
 
 desc "Parse data file."
 task :parse, [] do |_, _args|
+  DataParser.configuration do
+    RowProcessor.use_default_presenter = false
+  end
+
   PUTS_DATA_SAVER = ->(*args) { ap args }
+
   processor = RowProcessor.new(required: ComplexFields::Boolean.new)
 
   DataParser.new("spec/examples/data_test.txt",
