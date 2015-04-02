@@ -2,6 +2,11 @@ require_relative "../spec_helper"
 require_relative "../../lib/row_processor"
 
 describe RowProcessor do
+  it "allows to set settings" do
+    assert_respond_to RowProcessor, :use_default_presenter=
+    assert_respond_to RowProcessor, :deafult_presenter=
+  end
+
   context "when parsing row" do
     let(:row) { [:a_value, :b_value, :c_value] }
     let(:keys) { [:a, :b, :c] }
@@ -31,16 +36,32 @@ describe RowProcessor do
       stub(columns_matching).column_type(:a) { :presenter }
     end
 
-    it "process field with default presenter if it not specified" do
-      parsed_value = RowProcessor.new(columns_matching:
-        columns_matching).call(row)[:a]
-      assert_equal "raw_value", parsed_value
+    context "when curresponding presenter passed" do
+      it "process field with specified presenter" do
+        parsed_value = RowProcessor.new(columns_matching: columns_matching,
+          presenter: value_presenter).call(row)[:a]
+        assert_equal "parsed_value", parsed_value
+      end
     end
 
-    it "process field with specified presenter if it passed" do
-      parsed_value = RowProcessor.new(columns_matching: columns_matching,
-        presenter: value_presenter).call(row)[:a]
-      assert_equal "parsed_value", parsed_value
+    context "when curresponding presenter not passed" do
+      it "process field with default presenter if use_default_presenter true" do
+        RowProcessor.stub(:use_default_presenter, true) do
+          RowProcessor.stub(:deafult_presenter, -> { value_presenter }) do
+            parsed_value = RowProcessor.new(columns_matching:
+              columns_matching).call(row)[:a]
+            assert_equal "parsed_value", parsed_value
+          end
+        end
+      end
+
+      it "process field and rise error if use_default_presenter false" do
+        RowProcessor.stub(:use_default_presenter, false) do
+          assert_raises(Cascade::UnknownPresenterType) do
+            RowProcessor.new(columns_matching: columns_matching).call(row)
+          end
+        end
+      end
     end
   end
 end
