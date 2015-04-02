@@ -1,9 +1,9 @@
 mapping:
-  - name
-  - class
-  - dorm
-  - room
-  - gpa
-  - country_iso
-  - required
-  - currency
+  name: string
+  class: string
+  dorm: string
+  room: string
+  gpa: string
+  country_iso: country_iso
+  required: boolean
+  cost: currency
