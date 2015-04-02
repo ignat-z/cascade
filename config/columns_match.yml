@@ -5,4 +5,5 @@ mapping:
   - room
   - gpa
   - country_iso
+  - required
   - currency
