@@ -1,8 +1,12 @@
 require_relative "../../spec_helper"
 require_relative "../../../lib/cascade/complex_fields/currency"
 
-describe ComplexFields::Currency do
-  subject { ComplexFields::Currency.new }
+describe Cascade::ComplexFields::Currency do
+  def described_class
+    Cascade::ComplexFields::Currency
+  end
+
+  subject { described_class.new }
 
   describe "parse" do
     it "return nil if input string isn't number" do

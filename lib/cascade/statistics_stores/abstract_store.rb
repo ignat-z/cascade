@@ -1,19 +1,21 @@
-module StatisticsStores
-  class AbstractStore
-    def initialize(default_value = nil)
-      @store = default_value || initialize_value
-    end
+module Cascade
+  module StatisticsStores
+    class AbstractStore
+      def initialize(default_value = nil)
+        @store = default_value || initialize_value
+      end
 
-    attr_reader :store
+      attr_reader :store
 
-    def update(*)
-      raise NotImplementedError
-    end
+      def update(*)
+        raise NotImplementedError
+      end
 
-    private
+      private
 
-    def initialize_value(*)
-      raise NotImplementedError
+      def initialize_value(*)
+        raise NotImplementedError
+      end
     end
   end
 end

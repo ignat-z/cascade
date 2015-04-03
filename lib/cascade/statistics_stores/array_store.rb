@@ -1,13 +1,15 @@
-module StatisticsStores
-  class ArrayStore < AbstractStore
-    def update(value)
-      @store << value
-    end
+module Cascade
+  module StatisticsStores
+    class ArrayStore < AbstractStore
+      def update(value)
+        @store << value
+      end
 
-    private
+      private
 
-    def initialize_value
-      []
+      def initialize_value
+        []
+      end
     end
   end
 end

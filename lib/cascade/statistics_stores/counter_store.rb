@@ -1,14 +1,16 @@
-module StatisticsStores
-  class CounterStore < AbstractStore
-    def update(value = nil)
-      value ||= 1
-      @store += value
-    end
+module Cascade
+  module StatisticsStores
+    class CounterStore < AbstractStore
+      def update(value = nil)
+        value ||= 1
+        @store += value
+      end
 
-    private
+      private
 
-    def initialize_value
-      0
+      def initialize_value
+        0
+      end
     end
   end
 end

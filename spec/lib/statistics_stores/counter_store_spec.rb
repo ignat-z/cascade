@@ -2,8 +2,8 @@ require_relative "../../spec_helper"
 require_relative "../../../lib/cascade/statistics_stores/abstract_store"
 require_relative "../../../lib/cascade/statistics_stores/counter_store"
 
-describe StatisticsStores::CounterStore do
-  subject { StatisticsStores::CounterStore.new }
+describe Cascade::StatisticsStores::CounterStore do
+  subject { Cascade::StatisticsStores::CounterStore.new }
 
   context "on initialization" do
     it "use empty array as default value" do

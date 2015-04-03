@@ -1,11 +1,14 @@
 require_relative "../spec_helper"
 require_relative "../../lib/cascade/columns_matching"
 
-describe ColumnsMatching do
-  subject { ColumnsMatching.new }
+describe Cascade::ColumnsMatching do
+  def described_class
+    Cascade::ColumnsMatching
+  end
+  subject { described_class.new }
 
   context "on settings file parsing" do
-    subject { ColumnsMatching.new(filepath: "config/columns_match.yml") }
+    subject { described_class.new(filepath: "config/columns_match.yml") }
 
     it "raise error if columns matching file doesnt contain mapping key" do
       mock(YAML).load_file("config/columns_match.yml") { {} }
@@ -20,14 +23,14 @@ describe ColumnsMatching do
 
   context "after file parsed" do
     before do
-      stub(YAML).load_file {
+      stub(YAML).load_file do
         {
           "mapping" => {
             "name"  => "string",
             "class" => "string"
           }
         }
-      }
+      end
     end
 
     context "#supported_keys" do
@@ -40,7 +43,7 @@ describe ColumnsMatching do
     context "#column_type" do
       it "return curresponding value for passed column value" do
         assert_equal :string,
-          ColumnsMatching.new(content: { name: "string" }).column_type(:name)
+          described_class.new(content: { name: "string" }).column_type(:name)
       end
     end
   end

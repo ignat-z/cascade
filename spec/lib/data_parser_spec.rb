@@ -1,14 +1,18 @@
 require_relative "../spec_helper"
 require_relative "../../lib/cascade/data_parser"
 
-describe DataParser do
+describe Cascade::DataParser do
+  def described_class
+    Cascade::DataParser
+  end
+
   class FakeDataProvider
     def open(_)
       [
         ["Sally Whittaker", "2018", "McCarren House", "312",
-          "3.75", "France", "+", "123.123"],
+         "3.75", "France", "+", "123.123"],
         ["Jeff Smith", "2018", "Prescott House", "17-D", "3.20",
-          "Austria", "45.12"]
+         "Austria", "45.12"]
       ]
     end
   end
@@ -21,7 +25,7 @@ describe DataParser do
     @data_saves_count = 0
     row_processor =  ->(_row) { @processor_calls_count += 1 }
     data_saver    =  ->(*)   { @data_saves_count += 1 }
-    @parser = DataParser.new(filename, row_processor: row_processor,
+    @parser = described_class.new(filename, row_processor: row_processor,
       data_saver: data_saver, data_provider: data_provider)
   end
 

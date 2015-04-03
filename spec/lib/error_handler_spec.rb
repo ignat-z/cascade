@@ -1,7 +1,11 @@
 require_relative "../spec_helper"
 require_relative "../../lib/cascade/error_handler"
 
-describe ErrorHandler do
+describe Cascade::ErrorHandler do
+  def described_class
+    Cascade::ErrorHandler
+  end
+
   let(:error_store) do
     ->(row, reason) do
       @errors ||= []
@@ -10,9 +14,9 @@ describe ErrorHandler do
   end
   let(:row) { Struct.new(:fields) }
 
-  subject { ErrorHandler.new(error_store: error_store) }
+  subject { described_class.new(error_store: error_store) }
 
-  ErrorHandler::HANDLING_EXCEPTIONS.each do |exception|
+  Cascade::ErrorHandler::HANDLING_EXCEPTIONS.each do |exception|
     it "catch #{exception} and send info to error store" do
       subject.with_errors_handling(row) { raise exception }
       assert_includes @errors, [row, exception.to_s]
@@ -21,7 +25,7 @@ describe ErrorHandler do
 
   describe "DEFAULT_ERROR_STORE" do
     it "create new array and push row with reason" do
-      result = ErrorHandler::DEFAULT_ERROR_STORE.call(:row, :reason)
+      result = Cascade::ErrorHandler::DEFAULT_ERROR_STORE.call(:row, :reason)
       assert_includes result, %i(row reason)
     end
   end
