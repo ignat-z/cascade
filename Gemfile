@@ -2,11 +2,7 @@ source "https://rubygems.org"
 
 gem "rake"
 gem "builder"
-gem "pg"
-gem "hstore_translate"
-gem "activerecord"
 gem "iso_country_codes"
-gem "awesome_print"
 
 group :test do
   gem "minitest"
