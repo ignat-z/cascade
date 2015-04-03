@@ -1,5 +1,5 @@
 require "singleton"
-require_relative "statistics_stores"
+require "cascade/statistics_stores"
 
 module Cascade
   class Statistics

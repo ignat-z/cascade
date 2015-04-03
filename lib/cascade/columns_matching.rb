@@ -1,5 +1,5 @@
 require "yaml"
-require_relative "exceptions"
+require "cascade/exceptions"
 
 module Cascade
   class ColumnsMatching

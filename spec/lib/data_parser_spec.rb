@@ -1,5 +1,5 @@
-require_relative "../spec_helper"
-require_relative "../../lib/cascade/data_parser"
+require "spec_helper"
+require "cascade/data_parser"
 
 describe Cascade::DataParser do
   def described_class

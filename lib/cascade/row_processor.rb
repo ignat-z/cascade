@@ -1,6 +1,6 @@
-require_relative "complex_fields"
-require_relative "exceptions"
-require_relative "helpers/configuration"
+require "cascade/complex_fields"
+require "cascade/exceptions"
+require "cascade/helpers/configuration"
 
 module Cascade
   class RowProcessor

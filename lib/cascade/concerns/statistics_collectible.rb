@@ -1,4 +1,4 @@
-require_relative "../statistics"
+require "cascade/statistics"
 
 module Cascade
   module StatisticsCollectible

@@ -1,5 +1,5 @@
-require_relative "../spec_helper"
-require_relative "../../lib/cascade/statistics"
+require "spec_helper"
+require "cascade/statistics"
 
 describe Cascade::Statistics do
   subject { Cascade::Statistics.instance }

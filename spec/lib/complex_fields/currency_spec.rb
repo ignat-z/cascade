@@ -1,5 +1,5 @@
-require_relative "../../spec_helper"
-require_relative "../../../lib/cascade/complex_fields/currency"
+require "spec_helper"
+require "cascade/complex_fields/currency"
 
 describe Cascade::ComplexFields::Currency do
   def described_class

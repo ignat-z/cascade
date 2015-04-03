@@ -1,6 +1,6 @@
-require_relative "../../spec_helper"
-require_relative "../../../lib/cascade/statistics_stores/abstract_store"
-require_relative "../../../lib/cascade/statistics_stores/counter_store"
+require "spec_helper"
+require "cascade/statistics_stores/abstract_store"
+require "cascade/statistics_stores/counter_store"
 
 describe Cascade::StatisticsStores::CounterStore do
   subject { Cascade::StatisticsStores::CounterStore.new }

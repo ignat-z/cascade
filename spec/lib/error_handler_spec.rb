@@ -1,5 +1,5 @@
-require_relative "../spec_helper"
-require_relative "../../lib/cascade/error_handler"
+require "spec_helper"
+require "cascade/error_handler"
 
 describe Cascade::ErrorHandler do
   def described_class

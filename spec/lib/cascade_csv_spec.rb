@@ -1,5 +1,5 @@
-require_relative "../spec_helper"
-require_relative "../../lib/cascade/cascade_csv"
+require "spec_helper"
+require "cascade/cascade_csv"
 
 describe Cascade::CascadeCsv do
   def described_class

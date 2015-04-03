@@ -1,8 +1,8 @@
-require_relative "columns_matching"
-require_relative "row_processor"
-require_relative "error_handler"
-require_relative "helpers/configuration"
-require_relative "helpers/hash"
+require "cascade/columns_matching"
+require "cascade/row_processor"
+require "cascade/error_handler"
+require "cascade/helpers/configuration"
+require "cascade/helpers/hash"
 
 module Cascade
   class DataParser

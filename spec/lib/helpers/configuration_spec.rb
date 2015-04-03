@@ -1,5 +1,5 @@
-require_relative "../../spec_helper"
-require_relative "../../../lib/cascade/helpers/configuration"
+require "spec_helper"
+require "cascade/helpers/configuration"
 
 describe Configuration do
   class ExtendableClass

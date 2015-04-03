@@ -1,5 +1,5 @@
-require_relative "../../spec_helper"
-require_relative "../../../lib/cascade/statistics_stores/abstract_store"
+require "spec_helper"
+require "cascade/statistics_stores/abstract_store"
 
 describe Cascade::StatisticsStores::AbstractStore do
   def described_class

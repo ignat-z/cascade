@@ -1,5 +1,5 @@
-require_relative "../spec_helper"
-require_relative "../../lib/cascade/row_processor"
+require "spec_helper"
+require "cascade/row_processor"
 
 describe Cascade::RowProcessor do
   def described_class

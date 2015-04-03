@@ -1,5 +1,5 @@
-require_relative "../../spec_helper"
-require_relative "../../../lib/cascade/complex_fields/boolean"
+require "spec_helper"
+require "cascade/complex_fields/boolean"
 
 describe Cascade::ComplexFields::Boolean do
   def described_class

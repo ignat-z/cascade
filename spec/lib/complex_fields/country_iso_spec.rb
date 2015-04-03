@@ -1,5 +1,5 @@
-require_relative "../../spec_helper"
-require_relative "../../../lib/cascade/complex_fields/country_iso"
+require "spec_helper"
+require "cascade/complex_fields/country_iso"
 
 describe Cascade::ComplexFields::CountryIso do
   def described_class
