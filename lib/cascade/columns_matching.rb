@@ -7,6 +7,7 @@ class ColumnsMatching
   def_delegator :supported_keys, :index
 
   def initialize(options = {})
+    @filepath = options[:filepath]
     @content = options.fetch(:content) { parse_content_file }
   end
 
@@ -28,7 +29,7 @@ class ColumnsMatching
   private
 
   def parse_content_file
-    content = YAML.load_file("config/columns_match.yml")
+    content = YAML.load_file(@filepath)
     (content && content["mapping"]) || raise(Cascade::WrongMappingFormat.new)
   end
 end

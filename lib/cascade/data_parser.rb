@@ -10,7 +10,6 @@ class DataParser
   def initialize(filename, options = {})
     @filename = filename
     @data_provider    = options.fetch(:data_provider)    { CascadeCsv }
-    @columns_matching = options.fetch(:columns_matching) { ColumnsMatching.new }
     @row_processor    = options.fetch(:row_processor)    { RowProcessor.new }
     @error_handler    = options.fetch(:error_handler)    { ErrorHandler.new }
     @data_saver       = options.fetch(:data_saver)

@@ -1,5 +1,5 @@
 require_relative "../spec_helper"
-require_relative "../../lib/error_handler"
+require_relative "../../lib/cascade/error_handler"
 
 describe ErrorHandler do
   let(:error_store) do

@@ -1,5 +1,5 @@
 require_relative "../spec_helper"
-require_relative "../../lib/row_processor"
+require_relative "../../lib/cascade/row_processor"
 
 describe RowProcessor do
   it "allows to set settings" do

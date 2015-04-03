@@ -1,5 +1,5 @@
 require_relative "../spec_helper"
-require_relative "../../lib/cascade_csv"
+require_relative "../../lib/cascade/cascade_csv"
 
 describe CascadeCsv do
   let(:filename) { "filename.csv" }

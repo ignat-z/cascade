@@ -1,5 +1,5 @@
 require_relative "../../spec_helper"
-require_relative "../../../lib/concerns/statistics_collectible.rb"
+require_relative "../../../lib/cascade/concerns/statistics_collectible.rb"
 
 describe StatisticsCollectible do
   class ExtendableClass; include StatisticsCollectible; end

@@ -1,5 +1,5 @@
 require_relative "../../spec_helper"
-require_relative "../../../lib/complex_fields/country_iso"
+require_relative "../../../lib/cascade/complex_fields/country_iso"
 
 describe ComplexFields::CountryIso do
   let(:subject) { ComplexFields::CountryIso.new }

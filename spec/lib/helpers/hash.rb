@@ -1,5 +1,5 @@
 require_relative "../../spec_helper"
-require_relative "../../../lib/helpers/hash"
+require_relative "../../../lib/cascade/helpers/hash"
 
 describe Hash do
   describe "#reverse_merge" do

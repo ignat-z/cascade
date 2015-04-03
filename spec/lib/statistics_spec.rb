@@ -1,5 +1,5 @@
 require_relative "../spec_helper"
-require_relative "../../lib/statistics"
+require_relative "../../lib/cascade/statistics"
 
 describe Statistics do
   subject { Statistics.instance }

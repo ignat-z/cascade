@@ -1,5 +1,5 @@
 require_relative "../../spec_helper"
-require_relative "../../../lib/helpers/configuration"
+require_relative "../../../lib/cascade/helpers/configuration"
 
 describe StatisticsCollectible do
   class ExtendableClass

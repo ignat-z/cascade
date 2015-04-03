@@ -1,5 +1,5 @@
 require_relative "../../spec_helper"
-require_relative "../../../lib/complex_fields/boolean"
+require_relative "../../../lib/cascade/complex_fields/boolean"
 
 describe ComplexFields::Boolean do
   let(:subject) { ComplexFields::Boolean.new }

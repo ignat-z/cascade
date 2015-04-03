@@ -1,5 +1,5 @@
 require_relative "../../spec_helper"
-require_relative "../../../lib/complex_fields/currency"
+require_relative "../../../lib/cascade/complex_fields/currency"
 
 describe ComplexFields::Currency do
   subject { ComplexFields::Currency.new }

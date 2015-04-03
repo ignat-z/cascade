@@ -1,5 +1,5 @@
 require_relative "../../spec_helper"
-require_relative "../../../lib/statistics_stores/abstract_store"
+require_relative "../../../lib/cascade/statistics_stores/abstract_store"
 
 describe StatisticsStores::AbstractStore do
   context "on initialization" do
