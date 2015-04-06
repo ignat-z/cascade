@@ -1,13 +1,13 @@
-require_relative "../spec_helper"
-require_relative "../../lib/statistics"
+require "spec_helper"
+require "cascade/statistics"
 
-describe Statistics do
-  subject { Statistics.instance }
+describe Cascade::Statistics do
+  subject { Cascade::Statistics.instance }
 
   context "#register_action" do
     it "regsiter store for statistics with passed name, store type and value" do
       subject.register_action(:record_parsed, :counter)
-      assert_instance_of StatisticsStores::CounterStore, subject.
+      assert_instance_of Cascade::StatisticsStores::CounterStore, subject.
         send(:store_repository)[:record_parsed]
     end
 

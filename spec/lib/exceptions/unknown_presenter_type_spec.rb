@@ -1,5 +1,5 @@
-require_relative "../../spec_helper"
-require_relative "../../../lib/exceptions/unknown_presenter_type"
+require "spec_helper"
+require "cascade/exceptions/unknown_presenter_type"
 
 describe Cascade::UnknownPresenterType do
   subject { Cascade::UnknownPresenterType.new }

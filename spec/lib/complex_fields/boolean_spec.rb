@@ -1,8 +1,12 @@
-require_relative "../../spec_helper"
-require_relative "../../../lib/complex_fields/boolean"
+require "spec_helper"
+require "cascade/complex_fields/boolean"
 
-describe ComplexFields::Boolean do
-  let(:subject) { ComplexFields::Boolean.new }
+describe Cascade::ComplexFields::Boolean do
+  def described_class
+    Cascade::ComplexFields::Boolean
+  end
+
+  let(:subject) { described_class.new }
 
   it "return true value for values that seems like true" do
     ["True",  "true",  "x",  "+",  true].each do |value|

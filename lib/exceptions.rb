@@ -1,2 +1,0 @@
-require_relative "exceptions/wrong_mapping_format"
-require_relative "exceptions/unknown_presenter_type"
