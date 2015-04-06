@@ -1,15 +1,15 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'cascade/version'
+require "cascade/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "cascade"
   spec.version       = Cascade::VERSION
   spec.authors       = ["Ignat Zakrevsky"]
   spec.email         = %w(iezakrevsky@gmail.com)
-  spec.summary       = %q{Ruby data parser gem.}
-  spec.description   = %q{Highly customizable ruby parser with a lot of DI}
+  spec.summary       = "Ruby data parser gem."
+  spec.description   = "Highly customizable ruby parser with a lot of DI"
   spec.homepage      = "https://github.com/ignat-zakrevsky/cascade"
   spec.license       = "MIT"
 

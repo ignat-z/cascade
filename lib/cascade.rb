@@ -7,5 +7,5 @@ require "cascade/helpers/configuration"
 module Cascade
   extend Configuration
 
-  autoload :DataParser, 'cascade/data_parser'
+  autoload :DataParser, "cascade/data_parser"
 end
