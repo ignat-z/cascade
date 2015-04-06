@@ -17,7 +17,7 @@ Cascade pretends to simplify main part of this step to save your time.
 
 ## Examples
 
-[Minimal working example](https://github.com/ignat-zakrevsky/cascade-example) 
+[Minimal working example](https://github.com/ignat-zakrevsky/cascade-example)
 
 [More complicated example](https://github.com/ignat-zakrevsky/cascade-example/tree/json-example)
 
@@ -33,7 +33,7 @@ gem 'cascade-rb'
 ```
 
 ## Usage
-Require gem files 
+Require gem files
 ```ruby
 require 'cascade'
 ```
@@ -41,8 +41,14 @@ require 'cascade'
 Configure it!
 ```ruby
 Cascade.configuration do
-  Cascade::RowProcessor.use_default_presenter = false # will throw exception in case of unavailable presenter
-  Cascade::ColumnsMatching.mapping_file = "columns_mapping.yml" # file with columns mapping, see below 
+  # [Object#call] will be used for undefined fields types
+  Cascade::RowProcessor.deafult_presenter
+  # [Boolean] will throw exception in case of unavailable presenter
+  Cascade::RowProcessor.use_default_presenter
+  # [String] filepath with columns mapping, see below
+  Cascade::ColumnsMatching.mapping_file
+  # [Boolean] will raise fields parsing exceptions
+  Cascade::ErrorHandler.raise_parse_errors
 end
 ```
 
@@ -54,7 +60,7 @@ Cascade::DataParser.new("data_test.txt").call
 ## Columns mapping
 Parsing file description should have next structure [(example)](https://github.com/ignat-zakrevsky/cascade-example/blob/master/columns_mapping.yml)
 ```yaml
-mapping: 
+mapping:
   name: type
 ```
 
@@ -98,13 +104,13 @@ class DateParser
   end
 end
 ```
-or you can always use lambdas for such logic 
+or you can always use lambdas for such logic
 ```ruby
 DATE_PARSER = -> (value) { Date.parse(value) }
 ```
 Provide all this stuff into data parser
 ```ruby
-Cascade::DataParser.new("data_test.json", 
+Cascade::DataParser.new("data_test.json",
   row_processor: Cascade::RowProcessor.new(date: DateParser.new),
   data_provider: ParserJSON.new,
   data_saver: PERSON_SAVER

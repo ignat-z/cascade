@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ignat Zakrevsky"]
   spec.email         = %w(iezakrevsky@gmail.com)
   spec.summary       = "Ruby data parser gem."
-  spec.description   = "Highly customizable ruby parser with a lot of DI"
+  spec.description   = "Highly customizable data parser with a lot of DI"
   spec.homepage      = "https://github.com/ignat-zakrevsky/cascade"
   spec.license       = "MIT"
 
