@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "cascade/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "cascade"
+  spec.name          = "cascade-rb"
   spec.version       = Cascade::VERSION
   spec.authors       = ["Ignat Zakrevsky"]
   spec.email         = %w(iezakrevsky@gmail.com)
