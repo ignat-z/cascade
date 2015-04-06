@@ -21,6 +21,14 @@ describe Cascade::ErrorHandler do
       subject.with_errors_handling(row) { raise exception }
       assert_includes @errors, [row, exception.to_s]
     end
+
+    it "raises #{exception} if raise_parse_errors setting is true" do
+      described_class.stub(:raise_parse_errors, true) do
+        assert_raises(exception) do
+          subject.with_errors_handling(row) { raise exception }
+        end
+      end
+    end
   end
 
   describe "DEFAULT_ERROR_STORE" do

@@ -1,5 +1,11 @@
+require "cascade/helpers/configuration"
+
 module Cascade
   class ErrorHandler
+    extend Configuration
+
+    define_setting :raise_parse_errors, false
+
     HANDLING_EXCEPTIONS = [IsoCountryCodes::UnknownCodeError, IndexError]
     DEFAULT_ERROR_STORE = ->(row, reason) do
       @errors ||= []
@@ -8,6 +14,9 @@ module Cascade
 
     def initialize(options = {})
       @error_store = options.fetch(:error_store) { DEFAULT_ERROR_STORE }
+      @handling_exceptions = options.fetch(:handling_exceptions) do
+        HANDLING_EXCEPTIONS
+      end
     end
 
     # Runs passed block with catching throwing errors and storing in ErrorStore
@@ -16,8 +25,9 @@ module Cascade
     # problems with processing
     def with_errors_handling(row)
       yield
-    rescue *HANDLING_EXCEPTIONS => exception
+    rescue *@handling_exceptions => exception
       @error_store.call(row, exception.to_s)
+      raise exception if self.class.raise_parse_errors
     end
   end
 end
