@@ -44,9 +44,9 @@ Cascade.configuration do
 end
 ```
 
-Provide file for parsing and callable object to process results and run it!
+Provide file for parsing and run it!
 ```ruby
-Cascade::DataParser.new("data_test.txt", data_saver: PUTS_DATA_SAVER).call
+Cascade::DataParser.new("data_test.txt").call
 ```
 
 ## Columns mapping
@@ -57,7 +57,7 @@ mapping:
 ```
 
 ## Components replaceability
-There is a lot of DI in this gem, so, you can replace each component of the parser. Let's assume you want to parse JSON files instead of CSV, ok!
+There is a lot of DI in this gem, so, you can replace each component of the parser. Let's assume you want to parse JSON files instead of CSV and save this to ActiveRecord model, ok!
 Writing new data provider:
 ```ruby
 class ParserJSON
@@ -66,11 +66,24 @@ class ParserJSON
   end
 end
 ```
+Writing new data saver:
+```ruby
+class PersonDataSaver
+  def call(person_data)
+    Person.create!(person_data)
+  end
+end
+```
+considering that there is no much logic even better
+```ruby
+ PERSON_SAVER = -> (person_data) { Person.create!(person_data) }
+```
 Provide it for data providing for data parser
 ```ruby
-Cascade::DataParser.new("data_test.json", data_saver: PUTS_DATA_SAVER,
+Cascade::DataParser.new("data_test.json", data_saver: PERSON_SAVER,
   data_provider: ParserJSON.new).call
 ```
+And that's all!
 [Example](https://github.com/ignat-zakrevsky/cascade-example/blob/json-example/main.rb)
 ## Conventions
 I'm fan of callable object as consequence I prefer #call methods for classes with one responsibility. [Nice video](http://www.rubytapas.com/episodes/35-Callable) that describes benefits of such approach
