@@ -1,3 +1,5 @@
+require "awesome_print"
+
 require "cascade/columns_matching"
 require "cascade/cascade_csv"
 require "cascade/row_processor"
@@ -6,12 +8,14 @@ require "cascade/helpers/hash"
 
 module Cascade
   class DataParser
+    PUTS_DATA_SAVER = ->(*args) { ap args }
+
     def initialize(filename, options = {})
       @filename = filename
       @data_provider    = options.fetch(:data_provider)    { CascadeCsv }
       @row_processor    = options.fetch(:row_processor)    { RowProcessor.new }
       @error_handler    = options.fetch(:error_handler)    { ErrorHandler.new }
-      @data_saver       = options.fetch(:data_saver)
+      @data_saver       = options.fetch(:data_saver)       { PUTS_DATA_SAVER }
     end
 
     # Starts parsing processing with opening file and iterating through each
