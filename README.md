@@ -15,9 +15,11 @@ Usually, parsing file process contains next steps:
 
 Cascade pretends to simplify main part of this step to save your time.
 
-## Example 
+## Examples
 
-[Working Example](https://github.com/ignat-zakrevsky/cascade-example)
+[Minimal working example](https://github.com/ignat-zakrevsky/cascade-example) 
+
+[More complicated example](https://github.com/ignat-zakrevsky/cascade-example/tree/json-example)
 
 ## Installation
 Install the cascade-rb package from Rubygems:
@@ -56,8 +58,18 @@ mapping:
   name: type
 ```
 
+## Columns parsing
+There are several alredy defined fields parsers (types):
+
+- currency
+- boolean
+- country_iso
+- string
+
+Feel free to add new fields parsers and provide it through PR.
+
 ## Components replaceability
-There is a lot of DI in this gem, so, you can replace each component of the parser. Let's assume you want to parse JSON files instead of CSV and save this to ActiveRecord model, ok!
+There is a lot of DI in this gem, so, you can replace each component of the parser. Let's assume you want to parse JSON files instead of CSV, save this to ActiveRecord model, and you need Date fields parsing, ok!
 Writing new data provider:
 ```ruby
 class ParserJSON
@@ -78,10 +90,25 @@ considering that there is no much logic even better
 ```ruby
  PERSON_SAVER = -> (person_data) { Person.create!(person_data) }
 ```
-Provide it for data providing for data parser
+Writing date parser:
 ```ruby
-Cascade::DataParser.new("data_test.json", data_saver: PERSON_SAVER,
-  data_provider: ParserJSON.new).call
+class DateParser
+  def call(value)
+    Date.parse(value)
+  end
+end
+```
+or you can always use lambdas for such logic 
+```ruby
+DATE_PARSER = -> (value) { Date.parse(value) }
+```
+Provide all this stuff into data parser
+```ruby
+Cascade::DataParser.new("data_test.json", 
+  row_processor: Cascade::RowProcessor.new(date: DateParser.new),
+  data_provider: ParserJSON.new,
+  data_saver: PERSON_SAVER
+ ).call
 ```
 And that's all!
 [Example](https://github.com/ignat-zakrevsky/cascade-example/blob/json-example/main.rb)
