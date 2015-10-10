@@ -6,7 +6,7 @@ module Cascade
 
     define_setting :raise_parse_errors, false
 
-    HANDLING_EXCEPTIONS = [IsoCountryCodes::UnknownCodeError, IndexError]
+    HANDLING_EXCEPTIONS = [IndexError]
     DEFAULT_ERROR_STORE = ->(row, reason) do
       @errors ||= []
       @errors << [row, reason]

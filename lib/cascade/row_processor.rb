@@ -43,7 +43,6 @@ module Cascade
       {
         string:      DEFAULT_PROCESSOR,
         currency:    ComplexFields::Currency.new,
-        country_iso: ComplexFields::CountryIso.new,
         boolean:     ComplexFields::Boolean.new,
       }
     end
