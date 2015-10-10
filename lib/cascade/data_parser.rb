@@ -1,5 +1,3 @@
-require "awesome_print"
-
 require "cascade/columns_matching"
 require "cascade/cascade_csv"
 require "cascade/row_processor"
@@ -8,7 +6,7 @@ require "cascade/helpers/hash"
 
 module Cascade
   class DataParser
-    PUTS_DATA_SAVER = ->(*args) { ap args }
+    PUTS_DATA_SAVER = ->(*args) { p args }
 
     def initialize(filename, options = {})
       @filename = filename
