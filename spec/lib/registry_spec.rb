@@ -21,6 +21,6 @@ describe Cascade::Registry do
   end
 
   it "return default data provider" do
-    assert_equal described_class.data_provider, Cascade::CascadeCsv
+    assert_raises(StandardError) { described_class.data_provider }
   end
 end
