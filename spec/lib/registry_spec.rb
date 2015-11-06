@@ -21,6 +21,8 @@ describe Cascade::Registry do
   end
 
   it "return default data provider" do
-    assert_raises(StandardError) { described_class.data_provider }
+    assert_raises(Cascade::UnsupportedComponent) do
+      described_class.data_provider
+    end
   end
 end

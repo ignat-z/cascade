@@ -18,8 +18,7 @@ module Cascade
     end
 
     def self.data_provider
-      raise StandardError,
-        "You should provide data provider that respond to `open` method"
+      raise Cascade::UnsupportedComponent
     end
   end
 end

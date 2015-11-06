@@ -7,7 +7,7 @@ describe Cascade::DataParser do
   end
 
   class FakeDataProvider
-    def open(_)
+    def self.open(_)
       [
         ["Sally Whittaker", "2018", "McCarren House", "312",
          "3.75", "France", "+", "123.123"],
@@ -18,14 +18,14 @@ describe Cascade::DataParser do
   end
 
   let(:filename) { "spec/examples/data_test.txt" }
-  let(:data_provider) { FakeDataProvider.new }
+  let(:data_provider) { FakeDataProvider.open(filename) }
 
   before do
     @processor_calls_count = 0
     @data_saves_count = 0
     row_processor =  ->(_row) { @processor_calls_count += 1 }
     data_saver    =  ->(*)   { @data_saves_count += 1 }
-    @parser = described_class.new(filename, row_processor: row_processor,
+    @parser = described_class.new(row_processor: row_processor,
       data_saver: data_saver, data_provider: data_provider)
   end
 
