@@ -1,4 +1,3 @@
-require "cascade/cascade_csv"
 require "cascade/error_handler"
 require "cascade/row_processor"
 
@@ -19,7 +18,8 @@ module Cascade
     end
 
     def self.data_provider
-      CascadeCsv
+      raise StandardError,
+        "You should provide data provider that respond to `open` method"
     end
   end
 end
