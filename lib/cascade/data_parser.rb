@@ -5,8 +5,7 @@ require "cascade/registry"
 module Cascade
   class DataParser
 
-    def initialize(filename, options = {})
-      @filename = filename
+    def initialize(options = {})
       @data_provider  = options.fetch(:data_provider) { Registry.data_provider }
       @row_processor  = options.fetch(:row_processor) { Registry.row_processor }
       @error_handler  = options.fetch(:error_handler) { Registry.error_handler }
@@ -18,7 +17,7 @@ module Cascade
     # DataSaver
     #
     def call
-      @data_provider.open(@filename).each do |row|
+      @data_provider.each do |row|
         @error_handler.with_errors_handling(row) do
           @data_saver.call @row_processor.call(row)
         end
