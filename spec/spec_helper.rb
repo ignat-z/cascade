@@ -18,4 +18,6 @@ class Minitest::Test
   parallelize_me!
 end
 
-alias :context :describe
+module Kernel
+  alias_method :context, :describe
+end

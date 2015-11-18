@@ -4,7 +4,6 @@ require "cascade/registry"
 
 module Cascade
   class DataParser
-
     def initialize(options = {})
       @data_provider  = options.fetch(:data_provider) { Registry.data_provider }
       @row_processor  = options.fetch(:row_processor) { Registry.row_processor }

@@ -7,7 +7,7 @@ module Cascade
     define_setting :raise_parse_errors, false
 
     HANDLING_EXCEPTIONS = [IndexError]
-    DEFAULT_ERROR_STORE = ->(row, reason) do
+    DEFAULT_ERROR_STORE = lambda do |row, reason|
       @errors ||= []
       @errors << [row, reason]
     end

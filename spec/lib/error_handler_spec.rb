@@ -7,7 +7,7 @@ describe Cascade::ErrorHandler do
   end
 
   let(:error_store) do
-    ->(row, reason) do
+    lambda do |row, reason|
       @errors ||= []
       @errors << [row, reason]
     end
