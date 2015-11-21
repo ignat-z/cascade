@@ -1,5 +1,4 @@
 require "cascade/columns_matching"
-require "cascade/helpers/hash"
 require "cascade/registry"
 
 module Cascade

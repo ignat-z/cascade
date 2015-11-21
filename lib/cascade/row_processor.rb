@@ -1,10 +1,12 @@
 require "cascade/complex_fields"
 require "cascade/exceptions"
 require "cascade/helpers/configuration"
+require "cascade/helpers/hash"
 
 module Cascade
   class RowProcessor
     extend Configuration
+    using HashRefinements
 
     DEFAULT_PROCESSOR = ->(value) { value }
 
