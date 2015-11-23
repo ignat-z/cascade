@@ -52,9 +52,9 @@ Cascade.configuration do
 end
 ```
 
-Provide file for parsing and run it!
+Provide iteratable object for parsing and run it!
 ```ruby
-Cascade::DataParser.new("data_test.txt").call
+Cascade::DataParser.new(data_provider: Csv.open("data_test.csv")).call
 ```
 
 ## Columns mapping
@@ -69,7 +69,6 @@ There are several alredy defined fields parsers (types):
 
 - currency
 - boolean
-- country_iso
 - string
 
 Feel free to add new fields parsers and provide it through PR.
@@ -110,9 +109,9 @@ DATE_PARSER = -> (value) { Date.parse(value) }
 ```
 Provide all this stuff into data parser
 ```ruby
-Cascade::DataParser.new("data_test.json",
+Cascade::DataParser.new(
+  data_provider: ParserJSON.new.open("data_test.csv"),
   row_processor: Cascade::RowProcessor.new(date: DateParser.new),
-  data_provider: ParserJSON.new,
   data_saver: PERSON_SAVER
  ).call
 ```
