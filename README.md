@@ -1,6 +1,6 @@
 # [Cascade]
 
-[![Codeship Status for ignat-zakrevsky/cascade](https://codeship.com/projects/d7590880-9943-0132-4aa6-1e41bc68e178/status?branch=master)](https://codeship.com/projects/63625) [![Code Climate](https://codeclimate.com/github/ignat-zakrevsky/cascade/badges/gpa.svg)](https://codeclimate.com/github/ignat-zakrevsky/cascade) [![Test Coverage](https://codeclimate.com/github/ignat-zakrevsky/cascade/badges/coverage.svg)](https://codeclimate.com/github/ignat-zakrevsky/cascade) [![Gem Version](https://badge.fury.io/rb/cascade-rb.svg)](http://badge.fury.io/rb/cascade-rb)
+[![Codeship Status for ignat-zakrevsky/cascade](https://codeship.com/projects/d7590880-9943-0132-4aa6-1e41bc68e178/status?branch=master)](https://codeship.com/projects/63625) [![Code Climate](https://codeclimate.com/github/ignat-zakrevsky/cascade/badges/gpa.svg)](https://codeclimate.com/github/ignat-zakrevsky/cascade) [![Test Coverage](https://codeclimate.com/github/ignat-zakrevsky/cascade/badges/coverage.svg)](https://codeclimate.com/github/ignat-zakrevsky/cascade) [![Gem Version](https://badge.fury.io/rb/cascade-rb.svg)](http://badge.fury.io/rb/cascade-rb) [![Codacy Badge](https://api.codacy.com/project/badge/grade/3d27b4bc418341dcb4f704cafebffd4d)](https://www.codacy.com/app/iezakrevsky/cascade)
 
 The main aim of this gem is to provide some kind of template for parsing files.
 Usually, parsing file process contains next steps:
