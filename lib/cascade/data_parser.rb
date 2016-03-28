@@ -15,9 +15,9 @@ module Cascade
     # DataSaver
     #
     def call
-      @data_provider.each do |row|
+      @data_provider.each_with_index do |row, row_number|
         @error_handler.with_errors_handling(row) do
-          @data_saver.call @row_processor.call(row)
+          @data_saver.call @row_processor.call(row), row_number
         end
       end
     end

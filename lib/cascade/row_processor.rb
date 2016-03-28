@@ -14,6 +14,7 @@ module Cascade
     define_setting :deafult_presenter, -> { DEFAULT_PROCESSOR }
 
     def initialize(options = {})
+      @options          = options
       @columns_matching = options[:columns_matching] || ColumnsMatching.new
       @presenters       = options.reverse_merge(defined_presenters)
     end
@@ -46,6 +47,7 @@ module Cascade
         string:      DEFAULT_PROCESSOR,
         currency:    ComplexFields::Currency.new,
         boolean:     ComplexFields::Boolean.new,
+        recursive:   self.class.new(@options)
       }
     end
   end
