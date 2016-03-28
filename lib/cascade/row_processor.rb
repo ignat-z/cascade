@@ -47,12 +47,17 @@ module Cascade
       @presenters ||= options.reverse_merge(defined_presenters)
     end
 
+    def self_copy
+      self.class.new(options)
+    end
+
     def defined_presenters
       {
-        string:      DEFAULT_PROCESSOR,
-        currency:    ComplexFields::Currency.new,
-        boolean:     ComplexFields::Boolean.new,
-        recursive:   self.class.new(options)
+        string:             DEFAULT_PROCESSOR,
+        currency:           ComplexFields::Currency.new,
+        boolean:            ComplexFields::Boolean.new,
+        iterable_recursive: ComplexFields::ArrayProcessor.new(self_copy),
+        recursive:          self_copy
       }
     end
   end
