@@ -9,7 +9,7 @@ describe Cascade::ErrorHandler do
   let(:error_store) do
     lambda do |row, reason|
       @errors ||= []
-      @errors << [row, reason]
+      @errors << [row, reason.to_s]
     end
   end
   let(:row) { Struct.new(:fields) }
@@ -34,7 +34,7 @@ describe Cascade::ErrorHandler do
   describe "DEFAULT_ERROR_STORE" do
     it "create new array and push row with reason" do
       result = Cascade::ErrorHandler::DEFAULT_ERROR_STORE.call(:row, :reason)
-      assert_includes result, %i(row reason)
+      assert_includes result, [:row, "reason"]
     end
   end
 end

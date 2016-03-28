@@ -7,9 +7,9 @@ module Cascade
     define_setting :raise_parse_errors, false
 
     HANDLING_EXCEPTIONS = [IndexError]
-    DEFAULT_ERROR_STORE = lambda do |row, reason|
+    DEFAULT_ERROR_STORE = lambda do |row, exception|
       @errors ||= []
-      @errors << [row, reason]
+      @errors << [row, exception.to_s]
     end
 
     def initialize(options = {})
@@ -26,7 +26,7 @@ module Cascade
     def with_errors_handling(row)
       yield
     rescue *@handling_exceptions => exception
-      @error_store.call(row, exception.to_s)
+      @error_store.call(row, exception)
       raise exception if self.class.raise_parse_errors
     end
   end

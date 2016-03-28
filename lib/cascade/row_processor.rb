@@ -14,8 +14,8 @@ module Cascade
     define_setting :deafult_presenter, -> { DEFAULT_PROCESSOR }
 
     def initialize(options = {})
+      @options          = options
       @columns_matching = options[:columns_matching] || ColumnsMatching.new
-      @presenters       = options.reverse_merge(defined_presenters)
     end
 
     # Iterates through object using columns values supported keys as keys for
@@ -33,12 +33,18 @@ module Cascade
 
     private
 
+    attr_reader :options
+
     def receive_presenter(column_name)
-      presenter = @presenters[@columns_matching.column_type(column_name)]
+      presenter = presenters[@columns_matching.column_type(column_name)]
       if presenter.nil? && !self.class.use_default_presenter
         raise Cascade::UnknownPresenterType.new
       end
       presenter || self.class.deafult_presenter
+    end
+
+    def presenters
+      @presenters ||= options.reverse_merge(defined_presenters)
     end
 
     def defined_presenters
@@ -46,6 +52,7 @@ module Cascade
         string:      DEFAULT_PROCESSOR,
         currency:    ComplexFields::Currency.new,
         boolean:     ComplexFields::Boolean.new,
+        recursive:   self.class.new(options)
       }
     end
   end
