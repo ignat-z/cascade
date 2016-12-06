@@ -8,7 +8,7 @@ module Cascade
     extend Configuration
     using HashRefinements
 
-    DEFAULT_PROCESSOR = ->(value) { value }
+    DEFAULT_PROCESSOR = ->(value) { value&.strip }
 
     define_setting :use_default_presenter, false
     define_setting :deafult_presenter, -> { DEFAULT_PROCESSOR }

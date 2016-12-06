@@ -2,10 +2,10 @@
 
 [![Codeship Status for ignat-zakrevsky/cascade](https://codeship.com/projects/d7590880-9943-0132-4aa6-1e41bc68e178/status?branch=master)](https://codeship.com/projects/63625) [![Code Climate](https://codeclimate.com/github/ignat-zakrevsky/cascade/badges/gpa.svg)](https://codeclimate.com/github/ignat-zakrevsky/cascade) [![Test Coverage](https://codeclimate.com/github/ignat-zakrevsky/cascade/badges/coverage.svg)](https://codeclimate.com/github/ignat-zakrevsky/cascade) [![Gem Version](https://badge.fury.io/rb/cascade-rb.svg)](http://badge.fury.io/rb/cascade-rb) [![Codacy Badge](https://api.codacy.com/project/badge/grade/3d27b4bc418341dcb4f704cafebffd4d)](https://www.codacy.com/app/iezakrevsky/cascade)
 
-The main aim of this gem is to provide some kind of template for parsing files.
-Usually, parsing file process contains next steps:
+The main goal of this gem is to provide some kind of template for parsing files.
+Usually, file parsing process consists of the following steps:
 
- 1. Retreiving info from file
+ 1. Retrieve info from file
  2. Distinguish content from each file line
  3. Parse each column with corresponding parser
  4. Generate some kind of data record
@@ -52,26 +52,26 @@ Cascade.configuration do
 end
 ```
 
-Provide iteratable object for parsing and run it!
+Provide enumerable object for parsing and run it!
 ```ruby
 Cascade::DataParser.new(data_provider: Csv.open("data_test.csv")).call
 ```
 
 ## Columns mapping
-Parsing file description should have next structure [(example)](https://github.com/ignat-zakrevsky/cascade-example/blob/master/columns_mapping.yml)
+Parsing file description should have the following structure [(example)](https://github.com/ignat-zakrevsky/cascade-example/blob/master/columns_mapping.yml)
 ```yaml
 mapping:
   name: type
 ```
 
 ## Columns parsing
-There are several alredy defined fields parsers (types):
+There are already several defined field parsers (types):
 
 - currency
 - boolean
 - string
 
-Feel free to add new fields parsers and provide it through PR.
+Feel free to add new field parsers through PR.
 
 ## Components replaceability
 There is a lot of DI in this gem, so, you can replace each component of the parser. Let's assume you want to parse JSON files instead of CSV, save this to ActiveRecord model, and you need Date fields parsing, ok!
