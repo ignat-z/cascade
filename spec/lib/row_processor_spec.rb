@@ -26,7 +26,7 @@ describe Cascade::RowProcessor do
     it "collect row values with corresponding keys" do
       processed_row = described_class.new(columns_matching:
         columns_matching).call(row)
-      assert_equal(processed_row, a: :a_value, b: :b_value, c: :c_value)
+      assert_equal(processed_row, a: "a_value", b: "b_value", c: "c_value")
     end
   end
 
