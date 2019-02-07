@@ -15,12 +15,6 @@ Usually, file parsing process consists of the following steps:
 
 Cascade pretends to simplify main part of this step to save your time.
 
-## Examples
-
-[Minimal working example](https://github.com/ignat-zakrevsky/cascade-example)
-
-[More complicated example](https://github.com/ignat-zakrevsky/cascade-example/tree/json-example)
-
 ## Installation
 Install the cascade-rb package from Rubygems:
 ```
@@ -36,20 +30,6 @@ gem 'cascade-rb'
 Require gem files
 ```ruby
 require 'cascade'
-```
-
-Configure it!
-```ruby
-Cascade.configuration do
-  # [Object#call] will be used for undefined fields types
-  Cascade::RowProcessor.deafult_presenter
-  # [Boolean] will throw exception in case of unavailable presenter
-  Cascade::RowProcessor.use_default_presenter
-  # [String] filepath with columns mapping, see below
-  Cascade::ColumnsMatching.mapping_file
-  # [Boolean] will raise fields parsing exceptions
-  Cascade::ErrorHandler.raise_parse_errors
-end
 ```
 
 Provide enumerable object for parsing and run it!
@@ -111,11 +91,8 @@ Provide all this stuff into data parser
 ```ruby
 Cascade::DataParser.new(
   data_provider: ParserJSON.new.open("data_test.csv"),
-  row_processor: Cascade::RowProcessor.new(date: DateParser.new),
+  row_processor: Cascade::RowProcessor.new(ext_parsers: { date: DateParser.new }),
   data_saver: PERSON_SAVER
  ).call
 ```
 And that's all!
-[Example](https://github.com/ignat-zakrevsky/cascade-example/blob/json-example/main.rb)
-## Conventions
-I'm fan of callable object as consequence I prefer #call methods for classes with one responsibility. [Nice video](http://www.rubytapas.com/episodes/35-Callable) that describes benefits of such approach

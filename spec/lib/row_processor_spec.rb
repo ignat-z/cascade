@@ -8,11 +8,6 @@ describe Cascade::RowProcessor do
     Cascade::RowProcessor
   end
 
-  it 'allows to set settings' do
-    assert_respond_to described_class, :use_default_presenter=
-    assert_respond_to described_class, :deafult_presenter=
-  end
-
   context 'when parsing row' do
     let(:row) { %i[a_value b_value c_value] }
     let(:keys) { %i[a b c] }
@@ -44,29 +39,31 @@ describe Cascade::RowProcessor do
 
     context 'when curresponding presenter passed' do
       it 'process field with specified presenter' do
-        parsed_value = described_class.new(columns_matching: columns_matching,
-                                           presenter: value_presenter)
-                                      .call(row)[:a]
+        parsed_value = described_class.new(
+          columns_matching: columns_matching,
+          ext_presenters: { presenter: value_presenter }
+        ).call(row)[:a]
         assert_equal 'parsed_value', parsed_value
       end
     end
 
     context 'when curresponding presenter not passed' do
-      it 'process field with default presenter if use_default_presenter true' do
-        described_class.stub(:use_default_presenter, true) do
-          described_class.stub(:deafult_presenter, -> { value_presenter }) do
-            parsed_value = described_class.new(columns_matching:
-              columns_matching).call(row)[:a]
-            assert_equal 'parsed_value', parsed_value
+      context 'when use_default_presenter is false' do
+        it 'process field and rise error' do
+          assert_raises(Cascade::UnknownPresenterType) do
+            described_class.new(columns_matching: columns_matching).call(row)
           end
         end
       end
 
-      it 'process field and rise error if use_default_presenter false' do
-        described_class.stub(:use_default_presenter, false) do
-          assert_raises(Cascade::UnknownPresenterType) do
-            described_class.new(columns_matching: columns_matching).call(row)
-          end
+      context 'when use_default_presenter is true' do
+        it 'process field with default presenter' do
+          parsed_value = described_class.new(
+            columns_matching: columns_matching,
+            use_default_presenter: true,
+            deafult_presenter: value_presenter
+          ).call(row)[:a]
+          assert_equal 'parsed_value', parsed_value
         end
       end
     end

@@ -2,28 +2,26 @@
 
 require 'cascade/complex_fields'
 require 'cascade/exceptions'
-require 'cascade/helpers/configuration'
 require 'cascade/helpers/hash'
 
 module Cascade
   class RowProcessor
-    extend Configuration
     using HashRefinements
 
     DEFAULT_PROCESSOR = ->(value) { value&.to_s&.strip }
 
-    define_setting :use_default_presenter, false
-    define_setting :deafult_presenter, -> { DEFAULT_PROCESSOR }
-
     def initialize(options = {})
-      @options          = options
-      @columns_matching = options[:columns_matching] || ColumnsMatching.new
+      @options = options
+      @ext_presenters = options[:ext_presenters].to_h
+      @columns_matching = options.fetch(:columns_matching)
+      @use_default_presenter = options.fetch(:use_default_presenter, false)
+      @deafult_presenter = options.fetch(:deafult_presenter, DEFAULT_PROCESSOR)
     end
 
     # Iterates through object using columns values supported keys as keys for
-    # iterating, then parse it by curresponding parser.
+    # iterating, then parse it by the corresponding parser.
     #
-    # @param row [Hash] the object retrieved from CSV
+    # @param row [Hash] the object retrieved from data parser
     # @return [Hash] the object with parsed columns
     def call(row)
       @columns_matching.supported_keys.inject({}) do |result, key|
@@ -39,22 +37,22 @@ module Cascade
 
     def receive_presenter(column_name)
       presenter = presenters[@columns_matching.column_type(column_name)]
-      if presenter.nil? && !self.class.use_default_presenter
+      if presenter.nil? && !@use_default_presenter
         raise Cascade::UnknownPresenterType
       end
 
-      presenter || self.class.deafult_presenter
+      presenter || @deafult_presenter
     end
 
     def presenters
-      @presenters ||= options.reverse_merge(defined_presenters)
+      @presenters ||= @ext_presenters.reverse_merge(predefined_presenters)
     end
 
     def self_copy
       self.class.new(options)
     end
 
-    def defined_presenters
+    def predefined_presenters
       {
         string: DEFAULT_PROCESSOR,
         currency: ComplexFields::Currency.new,

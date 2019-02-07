@@ -8,9 +8,8 @@ describe Cascade::Registry do
     Cascade::Registry
   end
 
-  it 'creates new instance of default row processor' do
-    mock(Cascade::RowProcessor).new
-    described_class.row_processor
+  it 'return default callable row processor' do
+    assert_respond_to described_class.row_processor, :call
   end
 
   it 'creates new instance of default error handler' do
