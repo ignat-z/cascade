@@ -1,5 +1,7 @@
-require "singleton"
-require "cascade/statistics_stores"
+# frozen_string_literal: true
+
+require 'singleton'
+require 'cascade/statistics_stores'
 
 module Cascade
   class Statistics

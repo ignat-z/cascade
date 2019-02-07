@@ -1,4 +1,6 @@
-require "cascade/helpers/configuration"
+# frozen_string_literal: true
+
+require 'cascade/helpers/configuration'
 
 module Cascade
   class ErrorHandler
@@ -6,7 +8,7 @@ module Cascade
 
     define_setting :raise_parse_errors, false
 
-    HANDLING_EXCEPTIONS = [IndexError]
+    HANDLING_EXCEPTIONS = [IndexError].freeze
     DEFAULT_ERROR_STORE = lambda do |row, exception|
       @errors ||= []
       @errors << [row, exception.to_s]

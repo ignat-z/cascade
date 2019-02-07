@@ -1,5 +1,7 @@
-require "bigdecimal"
-require "bigdecimal/util"
+# frozen_string_literal: true
+
+require 'bigdecimal'
+require 'bigdecimal/util'
 
 module Cascade
   module ComplexFields
@@ -12,11 +14,13 @@ module Cascade
       private
 
       def normalized_value(value)
-        String(value).tr(",", ".").tr(" ", "")
+        String(value).tr(',', '.').tr(' ', '')
       end
 
       def valid?(value)
-        true if Float(value) rescue false
+        true if Float(value)
+      rescue StandardError
+        false
       end
     end
   end

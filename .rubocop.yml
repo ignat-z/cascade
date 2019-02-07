@@ -1,0 +1,11 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  UseCache: false
+  Exclude:
+    - 'vendor/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+Style/Documentation:
+  Enabled: false

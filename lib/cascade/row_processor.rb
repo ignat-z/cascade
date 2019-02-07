@@ -1,14 +1,16 @@
-require "cascade/complex_fields"
-require "cascade/exceptions"
-require "cascade/helpers/configuration"
-require "cascade/helpers/hash"
+# frozen_string_literal: true
+
+require 'cascade/complex_fields'
+require 'cascade/exceptions'
+require 'cascade/helpers/configuration'
+require 'cascade/helpers/hash'
 
 module Cascade
   class RowProcessor
     extend Configuration
     using HashRefinements
 
-    DEFAULT_PROCESSOR = ->(value) { value && value.to_s.strip }
+    DEFAULT_PROCESSOR = ->(value) { value&.to_s&.strip }
 
     define_setting :use_default_presenter, false
     define_setting :deafult_presenter, -> { DEFAULT_PROCESSOR }
@@ -38,8 +40,9 @@ module Cascade
     def receive_presenter(column_name)
       presenter = presenters[@columns_matching.column_type(column_name)]
       if presenter.nil? && !self.class.use_default_presenter
-        raise Cascade::UnknownPresenterType.new
+        raise Cascade::UnknownPresenterType
       end
+
       presenter || self.class.deafult_presenter
     end
 
@@ -53,11 +56,11 @@ module Cascade
 
     def defined_presenters
       {
-        string:             DEFAULT_PROCESSOR,
-        currency:           ComplexFields::Currency.new,
-        boolean:            ComplexFields::Boolean.new,
+        string: DEFAULT_PROCESSOR,
+        currency: ComplexFields::Currency.new,
+        boolean: ComplexFields::Boolean.new,
         iterable_recursive: ComplexFields::ArrayProcessor.new(self_copy),
-        recursive:          self_copy
+        recursive: self_copy
       }
     end
   end

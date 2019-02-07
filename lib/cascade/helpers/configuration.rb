@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Configuration
   def configuration
     yield self

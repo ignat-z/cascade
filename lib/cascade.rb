@@ -1,11 +1,13 @@
-require "cascade/version"
-require "cascade/columns_matching"
-require "cascade/row_processor"
-require "cascade/helpers/configuration"
+# frozen_string_literal: true
+
+require 'cascade/version'
+require 'cascade/columns_matching'
+require 'cascade/row_processor'
+require 'cascade/helpers/configuration'
 
 # Base gem module
 module Cascade
   extend Configuration
 
-  autoload :DataParser, "cascade/data_parser"
+  autoload :DataParser, 'cascade/data_parser'
 end

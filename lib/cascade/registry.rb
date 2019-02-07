@@ -1,5 +1,7 @@
-require "cascade/error_handler"
-require "cascade/row_processor"
+# frozen_string_literal: true
+
+require 'cascade/error_handler'
+require 'cascade/row_processor'
 
 module Cascade
   module Registry

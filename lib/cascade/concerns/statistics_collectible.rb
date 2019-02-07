@@ -1,4 +1,6 @@
-require "cascade/statistics"
+# frozen_string_literal: true
+
+require 'cascade/statistics'
 
 module Cascade
   module StatisticsCollectible

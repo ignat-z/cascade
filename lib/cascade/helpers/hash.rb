@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HashRefinements
   refine Hash do
     # Merges the caller into +other_hash+

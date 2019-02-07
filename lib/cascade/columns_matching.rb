@@ -1,7 +1,9 @@
-require "yaml"
+# frozen_string_literal: true
+
+require 'yaml'
 require 'forwardable'
-require "cascade/exceptions"
-require "cascade/helpers/configuration"
+require 'cascade/exceptions'
+require 'cascade/helpers/configuration'
 
 module Cascade
   class ColumnsMatching
@@ -36,7 +38,7 @@ module Cascade
 
     def parse_content_file
       content = YAML.load_file(@filepath || self.class.mapping_file)
-      (content && content["mapping"]) || raise(Cascade::WrongMappingFormat.new)
+      (content && content['mapping']) || raise(Cascade::WrongMappingFormat)
     end
   end
 end

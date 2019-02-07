@@ -1,23 +1,24 @@
-require "simplecov"
+# frozen_string_literal: true
+
+require 'simplecov'
 SimpleCov.start do
-  add_filter "spec/"
-  add_filter "vendor/"
+  add_filter 'spec/'
+  add_filter 'vendor/'
 end
 
-require "minitest/autorun"
-require "minitest/pride"
-require "minitest/mock"
-require "minitest/hell"
-require "shoulda/matchers"
-require "rr"
+require 'minitest/autorun'
+require 'minitest/pride'
+require 'minitest/mock'
+require 'minitest/hell'
+require 'shoulda/matchers'
+require 'rr'
 
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
-
-class Minitest::Test
-  parallelize_me!
+module Minitest
+  class Test
+    parallelize_me!
+  end
 end
 
 module Kernel
-  alias_method :context, :describe
+  alias context describe
 end

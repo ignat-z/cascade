@@ -1,5 +1,7 @@
-require "spec_helper"
-require "cascade/error_handler"
+# frozen_string_literal: true
+
+require 'spec_helper'
+require 'cascade/error_handler'
 
 describe Cascade::ErrorHandler do
   def described_class
@@ -31,10 +33,10 @@ describe Cascade::ErrorHandler do
     end
   end
 
-  describe "DEFAULT_ERROR_STORE" do
-    it "create new array and push row with reason" do
+  describe 'DEFAULT_ERROR_STORE' do
+    it 'create new array and push row with reason' do
       result = Cascade::ErrorHandler::DEFAULT_ERROR_STORE.call(:row, :reason)
-      assert_includes result, [:row, "reason"]
+      assert_includes result, [:row, 'reason']
     end
   end
 end

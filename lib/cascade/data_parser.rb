@@ -1,5 +1,7 @@
-require "cascade/columns_matching"
-require "cascade/registry"
+# frozen_string_literal: true
+
+require 'cascade/columns_matching'
+require 'cascade/registry'
 
 module Cascade
   class DataParser

@@ -1,3 +1,5 @@
-require "cascade/statistics_stores/abstract_store"
-require "cascade/statistics_stores/counter_store"
-require "cascade/statistics_stores/array_store"
+# frozen_string_literal: true
+
+require 'cascade/statistics_stores/abstract_store'
+require 'cascade/statistics_stores/counter_store'
+require 'cascade/statistics_stores/array_store'
