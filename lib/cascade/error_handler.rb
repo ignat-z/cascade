@@ -1,13 +1,7 @@
 # frozen_string_literal: true
 
-require 'cascade/helpers/configuration'
-
 module Cascade
   class ErrorHandler
-    extend Configuration
-
-    define_setting :raise_parse_errors, false
-
     HANDLING_EXCEPTIONS = [IndexError].freeze
     DEFAULT_ERROR_STORE = lambda do |row, exception|
       @errors ||= []
@@ -16,6 +10,7 @@ module Cascade
 
     def initialize(options = {})
       @error_store = options.fetch(:error_store) { DEFAULT_ERROR_STORE }
+      @raise_parse_errors = options.fetch(:raise_parse_errors, false)
       @handling_exceptions = options.fetch(:handling_exceptions) do
         HANDLING_EXCEPTIONS
       end
@@ -29,7 +24,7 @@ module Cascade
       yield
     rescue *@handling_exceptions => exception
       @error_store.call(row, exception)
-      raise exception if self.class.raise_parse_errors
+      raise exception if @raise_parse_errors
     end
   end
 end

@@ -6,9 +6,10 @@ require 'cascade/row_processor'
 module Cascade
   module Registry
     PUTS_DATA_SAVER = ->(*args) { p args }
+    SELF_PROCESSOR = ->(row) { row }
 
     def self.row_processor
-      RowProcessor.new
+      SELF_PROCESSOR
     end
 
     def self.error_handler

@@ -16,19 +16,23 @@ describe Cascade::ErrorHandler do
   end
   let(:row) { Struct.new(:fields) }
 
-  subject { described_class.new(error_store: error_store) }
+  context 'when raise_parse_errors setting is false' do
+    subject { described_class.new(error_store: error_store) }
 
-  Cascade::ErrorHandler::HANDLING_EXCEPTIONS.each do |exception|
-    it "catch #{exception} and send info to error store" do
-      subject.with_errors_handling(row) { raise exception }
-      assert_includes @errors, [row, exception.to_s]
+    it 'catches handling exceptions and send info to error store' do
+      subject.with_errors_handling(row) { raise IndexError }
+      assert_includes @errors, [row, IndexError.to_s]
+    end
+  end
+
+  context 'when raise_parse_errors setting is true' do
+    subject do
+      described_class.new(error_store: error_store, raise_parse_errors: true)
     end
 
-    it "raises #{exception} if raise_parse_errors setting is true" do
-      described_class.stub(:raise_parse_errors, true) do
-        assert_raises(exception) do
-          subject.with_errors_handling(row) { raise exception }
-        end
+    it 'raises for handling exceptions' do
+      assert_raises(IndexError) do
+        subject.with_errors_handling(row) { raise IndexError }
       end
     end
   end
