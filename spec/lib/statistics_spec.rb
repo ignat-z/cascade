@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'cascade/statistics'
 
 describe Cascade::Statistics do
-  subject { Cascade::Statistics.instance }
+  subject { Cascade::Statistics.new }
 
   context '#register_action' do
     it 'regsiter store for statistics with passed name, store type and value' do

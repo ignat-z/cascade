@@ -5,8 +5,6 @@ require 'cascade/statistics_stores'
 
 module Cascade
   class Statistics
-    include Singleton
-
     STORES = {
       counter: StatisticsStores::CounterStore,
       array: StatisticsStores::ArrayStore

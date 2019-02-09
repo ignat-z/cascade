@@ -1,20 +1,25 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require 'cascade/concerns/statistics_collectible'
 
 describe Cascade do
   let(:date_parser) { ->(value) { Date.parse(value) } }
   let(:int_parser) { ->(value) { Integer(value) } }
 
   class ExampleDateSaver
+    include ::Cascade::StatisticsCollectible
+
     def initialize
       @result = []
+      statistics.register_action(:save, :counter, 0)
     end
 
     attr_reader :result
 
     def call(row_description, _row_number)
       @result << row_description.values
+      statistics.update(:save)
     end
   end
 
@@ -66,5 +71,6 @@ describe Cascade do
     ).call
 
     assert_equal expected_result, data_saver.result
+    assert_equal 3, data_saver.statistics.for(:save)
   end
 end

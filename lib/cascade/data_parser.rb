@@ -2,6 +2,7 @@
 
 require 'cascade/columns_matching'
 require 'cascade/registry'
+require 'cascade/concerns/statistics_collectible'
 
 module Cascade
   class DataParser
